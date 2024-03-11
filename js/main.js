@@ -45,7 +45,7 @@ const selectable = [];
 const selectable2 = [];
 
 function crearCubos() {
-  let cubos = new Array(1);
+  let cubos = new Array(7);
 
   for (let i = 0; i < cubos.length; i++) {
     const geometry = new THREE.BoxGeometry();
