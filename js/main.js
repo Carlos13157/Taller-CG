@@ -35,7 +35,7 @@ const scene = new THREE.Scene();
 
 scene.add(camera);
 
-const light = new THREE.PointLight(0xffffff, 5, 100);
+const light = new THREE.PointLight(0xffffff, 2.5, 100);
 scene.add(light);
 const Ambientlight = new THREE.AmbientLight(0x404040); // soft white light
 scene.add(Ambientlight);
