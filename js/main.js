@@ -2,7 +2,6 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.119.1/build/three.m
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/controls/OrbitControls.min.js";
 import { VRButton } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/webxr/VRButton.min.js";
 import { ARButton } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/webxr/ARButton.js";
-import * as TWEEN from "https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.esm.min.js";
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -45,7 +44,7 @@ const selectable = [];
 const selectable2 = [];
 
 function crearCubos() {
-  let cubos = new Array(7);
+let cubos = new Array(7);
 
   for (let i = 0; i < cubos.length; i++) {
     const geometry = new THREE.BoxGeometry();
@@ -70,32 +69,7 @@ function crearCubos() {
   return cubos;
 }
 
-function crearCubos2() {
-  let cubos2 = new Array(1);
 
-  for (let i = 0; i < cubos2.length; i++) {
-    const geometry = new THREE.BoxGeometry();
-    var material = new THREE.MeshStandardMaterial({ color: getRandomColor() });
-    cubos2[i] = new THREE.Mesh(geometry, material);
-
-    cubos2[i].position.x = (Math.random() - 0.5) * 4;
-    cubos2[i].position.y = (Math.random() - 0.5) * 4;
-    cubos2[i].position.z = (Math.random() - 0.5) * 4;
-
-    cubos2[i].rotation.x = (Math.random() - 0.5) * 4;
-    cubos2[i].rotation.y = (Math.random() - 0.5) * 4;
-    cubos2[i].rotation.z = (Math.random() - 0.5) * 4;
-
-    scene.add(cubos2[i]);
-
-    selectable2.push({
-      selected2: true,
-      object2: cubos2[i],
-    });
-   
-  }
-  return cubos2;
-}
 
 // Función para obtener un color RGB aleatorio
 function getRandomColor() {
@@ -103,7 +77,7 @@ function getRandomColor() {
 }
 
 let cubos = crearCubos();
-//let cubos2 = crearCubos2();
+
 
 const cursorGeometry = new THREE.RingGeometry( 0.02, 0.04, 32 ).translate( 0, 0, - 1 );
 const cursorMaterial = new THREE.MeshBasicMaterial( { opacity: 0.5, transparent: true } );
@@ -133,7 +107,6 @@ function animate() {
 
   cursor.material.color.set(selectable.some(obj => obj.selected) ? new THREE.Color("blue") : new THREE.Color("white"));
 
-  //cursor.material.color.set(selectable2.some(obj2 => obj2.selected) ? new THREE.Color("crimson") : new THREE.Color("white"));
     if (isVR) {
     // Si estás en modo VR, verifica si se está utilizando la cámara estéreo
     if (renderer.xr.getSession()) {
@@ -147,23 +120,7 @@ function animate() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-function cubosEnEscena(cubos2) {
-  for (let i = 0; i < cubos2.length; i++) {
-    if (scene.children.includes(cubos2[i])) {
-      console.log(`Cubo ${i + 1} está en la escena.`);
-    } else {
-      console.log(`Cubo ${i + 1} no está en la escena.`);
-    }
-  }
-}
 
-// Crear cubos
-//const cubos2 = crearCubos2();
-
-// Verificar si los cubos están en la escena
-//cubosEnEscena(cubos2);
-
-/////////////////////////////////////////////////////////
 function updateSelection() {
     function onSessionStart() {
       isVR = true;
@@ -202,21 +159,12 @@ function updateSelection() {
         //dispersarCubo();
         //scene.remove(selectable[i].object);
       } 
-      else {
-        selectable[i].object.material.color.set(0x00ff00);
-      }
+      // else {
+      //   selectable[i].object.material.color.set(0x00ff00);
+      // }
       selectable[i].selected = selected;
       
-      // if (selected2) {
-      //   selectable2[i].object2.material.color.set(0xff9300);
-      //   scene.remove(selectable2[i].object2);
-      //   //dispersarCubo();
-      //   //scene.remove(selectable2[i].object);
-      // } 
-      // else {
-      //   //selectable[i].object.material.color.set(0x00ff00);
-      // }
-      //selectable2[i].selected = selected;
+
     }
     
     // Manejo de eventos para cambios en la sesión
