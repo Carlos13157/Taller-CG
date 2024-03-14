@@ -35,7 +35,7 @@ const scene = new THREE.Scene();
 
 scene.add(camera);
 
-const light = new THREE.PointLight(0xffffff, 1, 100);
+const light = new THREE.PointLight(0xffffff, 5, 100);
 scene.add(light);
 const Ambientlight = new THREE.AmbientLight(0x404040); // soft white light
 scene.add(Ambientlight);
@@ -51,13 +51,13 @@ let cubos = new Array(7);
     var material = new THREE.MeshStandardMaterial({ color: getRandomColor() });
     cubos[i] = new THREE.Mesh(geometry, material);
 
-    cubos[i].position.x = (Math.random() - 0.5) * 2;
-    cubos[i].position.y = (Math.random() - 0.5) * 2;
-    cubos[i].position.z = (Math.random() - 0.5) * 2;
+    cubos[i].position.x = (Math.random() - 0.5) * 4;
+    cubos[i].position.y = (Math.random() - 0.5) * 4;
+    cubos[i].position.z = (Math.random() - 0.5) * 4;
 
-    cubos[i].rotation.x = (Math.random() - 0.5) * 2;
-    cubos[i].rotation.y = (Math.random() - 0.5) * 2;
-    cubos[i].rotation.z = (Math.random() - 0.5) * 2;
+    cubos[i].rotation.x = (Math.random() - 0.5) * 4;
+    cubos[i].rotation.y = (Math.random() - 0.5) * 4;
+    cubos[i].rotation.z = (Math.random() - 0.5) * 4;
 
     scene.add(cubos[i]);
 
