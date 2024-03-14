@@ -153,7 +153,7 @@ function updateSelection() {
       const selected = intersects.length > 0;
       //const selected2 = intersects2.length > 0;
       if (selected) {
-        selectable[i].object.material.color.set(0xff9300);
+        //selectable[i].object.material.color.set(0xff9300);
         selectable[i].object.position.x = Math.random() * 10 - 5;
             selectable[i].object.position.y = Math.random() * 10 - 5;
         //dispersarCubo();
